@@ -20,13 +20,13 @@ body {
 
   .stack span {
     font-weight: bold;
-    color: #2ad48e; /* Header text color */
+    color: #2ad48e; 
     display: flex;
     justify-content: center;
     padding: 20px;
     grid-row-start: 1;
     grid-column-start: 1;
-    font-size: 4rem;
+    font-size: 5vw;
     --stack-height: calc(100% / var(--stacks) - 1px);
     --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
     --clip-top: calc(var(--stack-height) * var(--index));
@@ -56,6 +56,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
 
 }
 
@@ -66,14 +67,14 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgb(42, 212, 142, 0.5);
   overflow: hidden;
-  opacity: 0; /* Initially set opacity to 0 for the fade-in effect */
+  opacity: 0; 
   z-index: 3;
-  animation: fadeIn 1s ease-in-out forwards; /* Apply the fade-in animation */
-  transition: transform 0.3s ease; /* Add a transition for the zoom effect */
+  animation: fadeIn 1s ease-in-out forwards; 
+  transition: transform 0.3s ease; 
 }
 
 .card:hover {
-  transform: scale(1.1); /* Scale the card by 10% on hover */
+  transform: scale(1.1);
 }
 
 
@@ -122,7 +123,7 @@ p {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px); /* Optional: Add a slight vertical translation */
+        transform: translateY(20px); 
     }
     to {
         opacity: 1;
@@ -134,7 +135,6 @@ p {
     font-family: 'Glitch Goblin';
     src: url('fonts/glitch-goblin-font/glitchgoblin.woff2') format('woff2'),
          url('fonts/glitch-goblin-font/glitchgoblin.woff') format('woff');
-    /* You can add other font formats if available */
     font-weight: normal;
     font-style: normal;
 }
@@ -186,13 +186,13 @@ p {
 
 .shooting-star {
   position: absolute;
-  width: 6px; /* Increase the width */
-  height: 2px; /* Decrease the height */
+  width: 6px; 
+  height: 2px;
   background-color: white;
   opacity: 1;
   pointer-events: none;
   z-index: 1;
-  filter: blur(1px); /* Add a small blur to create a trail effect */
+  filter: blur(1px); 
 }
 
 .underline {
@@ -203,11 +203,11 @@ p {
   content: "";
   position: absolute;
   width: 0;
-  height: 2px; /* Height of the underline */
-  background-color: #1fa16b; /* Color of the underline */
+  height: 2px;
+  background-color: #1fa16b;
   bottom: 0;
   left: 0;
-  transition: width 3s; /* Adjust the duration as needed */
+  transition: width 3s;
 }
 
 .underline:hover::before, .underline::before {
