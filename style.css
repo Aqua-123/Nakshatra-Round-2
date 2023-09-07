@@ -1,0 +1,189 @@
+
+
+body {
+    font-family: 'Glitch Goblin', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #0d1d31, #0c0d13);
+    height: 100vh; 
+}
+
+
+/* https://codepen.io/aldrie/pen/PojGYLo */
+.stack {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .stack span {
+    font-weight: bold;
+    color: #2ad48e; /* Header text color */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    font-size: 4rem;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  }
+
+.stack span:nth-child(odd) { --glitch-translate: 8px; }
+.stack span:nth-child(even) { --glitch-translate: -8px; }
+
+
+.root {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.card {
+  width: 300px;
+  background-color: rgb(22, 34, 52);
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(42, 212, 142, 0.5);
+  overflow: hidden;
+  opacity: 0; /* Initially set opacity to 0 for the fade-in effect */
+  z-index: 3;
+  animation: fadeIn 1s ease-in-out forwards; /* Apply the fade-in animation */
+  transition: transform 0.3s ease; /* Add a transition for the zoom effect */
+}
+
+.card:hover {
+  transform: scale(1.1); /* Scale the card by 10% on hover */
+}
+
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 20px;
+    color: #26c784;
+}
+
+.made-by {
+  display : flex;
+  justify-content: center;
+  align-items: center;
+  color: #26c784;
+
+  .made-by-link {
+    color: #26c784;
+    margin-left: 5px;  
+    margin-right: 5px; 
+    text-decoration: none;
+  }
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: Add a slight vertical translation */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@font-face {
+    font-family: 'Glitch Goblin';
+    src: url('fonts/glitch-goblin-font/glitchgoblin.woff2') format('woff2'),
+         url('fonts/glitch-goblin-font/glitchgoblin.woff') format('woff');
+    /* You can add other font formats if available */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+  };
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    transform: translate(var(--glitch-translate));
+  }
+  2% {
+    text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+  }
+  4%, 100% {  text-shadow: none; transform: none; }
+}
+
+/* Shooting star animation */
+@keyframes shooting-star {
+  0% {
+      transform: translateX(0) translateY(0) scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: translateX(-100vw) translateY(100vh) scale(0.5);
+      opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 6px; /* Increase the width */
+  height: 2px; /* Decrease the height */
+  background-color: white;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(1px); /* Add a small blur to create a trail effect */
+}
