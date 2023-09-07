@@ -20,7 +20,7 @@ function createShootingStar() {
 }
 
 // Create shooting stars initially and continuously
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
     createShootingStar();
 }
 

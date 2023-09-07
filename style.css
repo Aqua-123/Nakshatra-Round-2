@@ -92,6 +92,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #26c784;
+  opacity: 0.5;
 
   .made-by-link {
     color: #26c784;
@@ -99,6 +100,12 @@ body {
     margin-right: 5px; 
     text-decoration: none;
   }
+}
+
+.my_profile_picture {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 h2 {
@@ -186,4 +193,23 @@ p {
   pointer-events: none;
   z-index: 1;
   filter: blur(1px); /* Add a small blur to create a trail effect */
+}
+
+.underline {
+  position: relative;
+}
+
+.underline::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px; /* Height of the underline */
+  background-color: #1fa16b; /* Color of the underline */
+  bottom: 0;
+  left: 0;
+  transition: width 3s; /* Adjust the duration as needed */
+}
+
+.underline:hover::before, .underline::before {
+  width: 100%;
 }
