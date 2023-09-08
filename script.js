@@ -5,8 +5,12 @@ function createShootingStar() {
     document.body.appendChild(shootingStar);
 
     const duration = Math.random() * 5 + 3; // Random duration between 3 to 8 seconds
-    const leftPosition = Math.random() * window.innerWidth;
-    const topPosition = Math.random() * window.innerHeight;
+
+    const maxWidth = window.innerWidth - 50; // Adjust for the shooting star's width
+    const maxHeight = window.innerHeight - 50; // Adjust for the shooting star's height
+
+    const leftPosition = Math.random() * maxWidth;
+    const topPosition = Math.random() * maxHeight;
 
     shootingStar.style.left = `${leftPosition}px`;
     shootingStar.style.top = `${topPosition}px`;
